@@ -7,7 +7,7 @@
 __all__ = ['check_date']
 
 
-def is_leap_year(year):
+def _is_leap_year(year):
     if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
         return True
     return False
@@ -21,7 +21,7 @@ def check_date(arg: str) -> bool:
     if 0 < year < 10_000:
         if month in [1, 3, 5, 7, 8, 10, 12] and 0 < day < 32 or \
                 month in [4, 6, 9, 11] and 0 < day < 31 or \
-                month == 2 and 0 < day < 29 + is_leap_year(year):
+                month == 2 and 0 < day < 29 + _is_leap_year(year):
             return True
         else:
             return False
